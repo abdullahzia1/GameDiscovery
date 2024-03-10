@@ -1,0 +1,45 @@
+// icons import
+import {
+  FaWindows,
+  FaLinux,
+  FaAndroid,
+  FaXbox,
+  FaPlaystation,
+  FaApple,
+} from "react-icons/fa";
+import { MdPhoneIphone } from "react-icons/md";
+import { SiNintendo } from "react-icons/si";
+import { BsGlobe } from "react-icons/bs";
+// chakra components and react Icon type for key based index mapping
+import { HStack, Icon } from "@chakra-ui/react";
+import { IconType } from "react-icons";
+//local imports
+import { Platform } from "../hooks/useGames";
+
+interface Props {
+  platforms: Platform[];
+}
+
+const PlatformIconList = ({ platforms }: Props) => {
+  const iconMap: { [key: string]: IconType } = {
+    pc: FaWindows,
+    playstation: FaPlaystation,
+    xbox: FaXbox,
+    nintendo: SiNintendo,
+    mac: FaApple,
+    linux: FaLinux,
+    android: FaAndroid,
+    ios: MdPhoneIphone,
+    web: BsGlobe,
+  };
+
+  return (
+    <HStack marginY={1}>
+      {platforms.map((platform) => (
+        <Icon as={iconMap[platform.slug]} color="gray.500" />
+      ))}
+    </HStack>
+  );
+};
+
+export default PlatformIconList;
