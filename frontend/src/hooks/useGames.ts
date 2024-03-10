@@ -33,7 +33,7 @@ const useGames = () => {
       .then((res) => {
         setGames(res.data.results);
         setLoading(false);
-        // console.log(res.data.results);
+        console.log(res.data.results);
       })
       .catch((err) => {
         if (err instanceof CanceledError) return;
